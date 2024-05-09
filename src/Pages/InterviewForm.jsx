@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import TaskList from "./DataSources/CandidateData";
-import { MenuItem } from "@material-ui/core";
+import { MenuItem } from "@mui/material";
 import { useAuth } from "../utils/AuthContent";
 
 const InterviewForm = () => {
