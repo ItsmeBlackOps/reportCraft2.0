@@ -19,7 +19,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^6.23.0"
+    "react-router-dom": "^6.23.0",
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -30,5 +32,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "vite": "^5.2.0"
+  },
+  "resolutions": {
+    "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
   }
 }
