@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/reportCraft2.0",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
