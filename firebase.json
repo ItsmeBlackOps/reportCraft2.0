@@ -1,7 +1,6 @@
 {
   "hosting": {
     "public": "./dist",
-    "site": "submissionsst",
     "rewrites": [ {
       "source": "**",
       "destination": "/index.html"

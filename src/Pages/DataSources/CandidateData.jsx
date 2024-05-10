@@ -24,7 +24,6 @@ function TaskList({ onDataReceived }) { // Accept a prop onDataReceived
             if (!response.data) {
                 throw new Error('No data received');
             }
-            console.log("Fetched data:", response.data); // Log the fetched data
             setTasks(response.data);
             onDataReceived(response.data); // Pass data to the parent component
         } catch (error) {

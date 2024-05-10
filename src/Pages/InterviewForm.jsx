@@ -13,6 +13,9 @@ const InterviewForm = () => {
   const { user } = useAuth();
   const [selectedUser, setSelectedUser] = useState("");
   const [data, setData] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
   const [formData, setFormData] = useState({
     InterviewSchedule: "",
     candidateName: "",
@@ -46,7 +49,6 @@ const InterviewForm = () => {
     const selectedUserName = event.target.value;
     setSelectedUser(selectedUserName); // Update selected user state
     setFormData((prevFormData) => ({
-      // Update formData state with selected user's name
       ...prevFormData,
       candidateName: selectedUserName,
     }));
@@ -62,8 +64,13 @@ const InterviewForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-
+    // Perform field validation
+    if (!formData.candidateName || !formData.company || !formData.employmentType || !formData.location || !formData.position || !formData.rate || !formData.sourceOfSubmission || !formData.status || !formData.vendorContact || !formData.vendorName || (submissionOrInterview === "Interview" && !formData.InterviewSchedule)) {
+      setError("All fields are required.");
+      return;
+    }
+    // Disable the submit button
+    setIsSubmitting(true);
     fetch("https://reportcraft-backend.onrender.com/addData", {
       method: "POST",
       body: JSON.stringify(formData),
@@ -72,9 +79,19 @@ const InterviewForm = () => {
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Error:", error));
+      .then((data) => {
+        console.log(data);
+        // Re-enable the submit button
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Re-enable the submit button
+        setIsSubmitting(false);
+        setError("Failed to submit the form. Please try again later.");
+      });
   };
+
   const handleSubmissionOrInterviewChange = (event) => {
     const selectedOption = event.target.value;
     setSubmissionOrInterview(selectedOption);
@@ -109,13 +126,13 @@ const InterviewForm = () => {
           select
           label="Candidate Name"
           name="candidateName"
-          value={selectedUser}
+          value={formData.candidateName}
           onChange={handleSelectChange}
           variant="standard"
           required
         >
           {data.map((user, index) => (
-            <MenuItem key={index} value={user.name}>
+            <MenuItem key={index} value={user.Candidate}>
               {user.Candidate}
             </MenuItem>
           ))}
@@ -157,10 +174,9 @@ const InterviewForm = () => {
           value={formData["company"]}
           onChange={handleInputChange}
           variant="standard"
-          
         />
         <TextField
-        select
+          select
           label="Employment Type"
           name="employmentType"
           value={formData["employmentType"]}
@@ -278,8 +294,12 @@ const InterviewForm = () => {
       {/* Add other TextField components here */}
       <div>
         <Stack spacing={2} direction="row">
-          <Button varient="contained" onClick={handleSubmit}>
-            Submit
+          <Button
+            varient="contained"
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
         </Stack>
       </div>

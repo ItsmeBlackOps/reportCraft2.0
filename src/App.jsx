@@ -28,9 +28,9 @@ function App() {
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/form" element={<InterviewForm/>}/>
               <Route path="/tasks" element={<QuickFilterOutsideOfGrid/>}/>
+              <Route path="/demo" element={<StyledQuickFilterInsideOfGrid />} />
               <Route element={<AdminRoutes />}> {/* Use AdminRoutes */}
 
-              <Route path="/demo" element={<StyledQuickFilterInsideOfGrid />} />
 
 
               
