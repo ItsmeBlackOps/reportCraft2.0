@@ -26,7 +26,7 @@ function TaskList({ onDataReceived }) {
                 headers['user-label'] = user.labels[0]
             }
     
-            const response = await axios.get('https://qxz2pcz7-3000.inc1.devtunnels.ms/api/getTasksData', {
+            const response = await axios.get('https://reportcraft-backend.onrender.com/api/getTasksData', {
                 headers: headers
             });
     

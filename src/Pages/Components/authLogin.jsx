@@ -76,4 +76,3 @@ const AuthLogin = ({ title, subtitle, subtext }) => (
 );
 
 export default AuthLogin;
-

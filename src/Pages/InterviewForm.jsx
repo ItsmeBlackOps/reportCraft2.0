@@ -64,7 +64,7 @@ const InterviewForm = () => {
     e.preventDefault();
     console.log("Form Data:", formData);
 
-    fetch("https://qxz2pcz7-3000.inc1.devtunnels.ms/addData", {
+    fetch("https://reportcraft-backend.onrender.com/addData", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {
@@ -110,12 +110,13 @@ const InterviewForm = () => {
           label="Candidate Name"
           name="candidateName"
           value={selectedUser}
-          onChange={handleSubmissionOrInterviewChange}
+          onChange={handleSelectChange}
           variant="standard"
+          required
         >
           {data.map((user, index) => (
             <MenuItem key={index} value={user.name}>
-              {user.name}
+              {user.Candidate}
             </MenuItem>
           ))}
         </TextField>
@@ -127,6 +128,7 @@ const InterviewForm = () => {
           value={submissionOrInterview}
           onChange={handleSubmissionOrInterviewChange}
           variant="standard"
+          required
         >
           <MenuItem value="Submission">Submission</MenuItem>
           <MenuItem value="Interview">Interview</MenuItem>
@@ -143,6 +145,7 @@ const InterviewForm = () => {
             InputLabelProps={{
               shrink: true,
             }}
+            required
           />
         )}
         <TaskList onDataReceived={handleDataReceived} />
@@ -154,17 +157,21 @@ const InterviewForm = () => {
           value={formData["company"]}
           onChange={handleInputChange}
           variant="standard"
+          
         />
         <TextField
+        select
           label="Employment Type"
           name="employmentType"
           value={formData["employmentType"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         >
           <MenuItem value="Full-Time">Full-time</MenuItem>
           <MenuItem value="W2">W2</MenuItem>
           <MenuItem value="C2C">C2C</MenuItem>
+          <MenuItem value="1099">1099</MenuItem>
         </TextField>
 
         <TextField
@@ -173,6 +180,7 @@ const InterviewForm = () => {
           value={formData["location"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         />
         <TextField
           label="Position"
@@ -180,6 +188,7 @@ const InterviewForm = () => {
           value={formData["position"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         />
         {/* <TextField
           label="QC Status"
@@ -194,6 +203,7 @@ const InterviewForm = () => {
           value={formData["rate"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         />
         {/* <TextField
           label="Recruiter Name"
@@ -208,6 +218,7 @@ const InterviewForm = () => {
           value={formData["sourceOfSubmission"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         />
         <TextField
           label="Status"
@@ -215,6 +226,7 @@ const InterviewForm = () => {
           value={formData["status"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         />
         <TextField
           label="Vendor Contact"
@@ -222,6 +234,7 @@ const InterviewForm = () => {
           value={formData["vendorContact"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         />
         <TextField
           label="Vendor Name"
@@ -229,6 +242,7 @@ const InterviewForm = () => {
           value={formData["vendorName"]}
           onChange={handleInputChange}
           variant="standard"
+          required
         />
       </div>
       <TextField
@@ -237,6 +251,7 @@ const InterviewForm = () => {
         value={formData["comments"]}
         onChange={handleInputChange}
         variant="standard"
+        required
       />
       {/* <TextField
         label="Follow Up 2"

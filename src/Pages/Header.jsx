@@ -29,16 +29,15 @@ const Header = () => {
                                 <Button component={Link} to="/demo" color="inherit" variant="text">
                                     Demo
                                 </Button>
+                            
                             )}
                             
-                            <Button component={Link} to="/profile" color="inherit" variant="text">
-                                Profile
-                            </Button>
+                            
                             <Button component={Link} to="/form" color="inherit" variant="text">
                                 Form
                             </Button>
                             <Button component={Link} to="/tasks" color="inherit" variant="text">
-                                Tasks
+                                Submissions
                             </Button>
                             <Button onClick={logoutUser} color="inherit" variant="outlined">
                                 Logout
