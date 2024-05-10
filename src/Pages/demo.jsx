@@ -66,7 +66,7 @@ const StyledQuickFilterInsideOfGrid = () => {
     console.log("Form Data:", formData);
 
     // Send form data to server
-    fetch("https://qxz2pcz7-3000.inc1.devtunnels.ms/addData", {
+    fetch("https://reportcraft-backend.onrender.com/addData", {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {
